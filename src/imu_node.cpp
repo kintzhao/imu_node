@@ -254,7 +254,7 @@ void ImuNode::LoopRun()
             ros::Time now = ros::Time::now();
             if (enable_record_)
             {
-                imu_data_record_ << (now - start_time).toSec() << "  " << (now - start_time).toNSec() << "  " << acc_data[0] << "  " << acc_data[1] << "  " << acc_data[2] << "  " << gyro_data[0] << "  " << gyro_data[1] << "  " << gyro_data[2] << std::endl;
+                imu_data_record_ << (now - start_time).toSec()/*<< "  " << (now - start_time).toNSec() */<< "  " << acc_data[0] << "  " << acc_data[1] << "  " << acc_data[2] << "  " << gyro_data[0] << "  " << gyro_data[1] << "  " << gyro_data[2] << std::endl;
             }
 
             PublishImuMessage(calibed_acc_data[0], calibed_acc_data[1], calibed_acc_data[2], calibed_gyro_data[0], calibed_gyro_data[1], calibed_gyro_data[2], quat[0], quat[1], quat[2], quat[3]);
