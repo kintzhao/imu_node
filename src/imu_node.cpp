@@ -257,16 +257,19 @@ void ImuNode::LoopRun()
                 imu_data_record_ << (now - start_time).toSec() << "  " << (now - start_time).toNSec() << "  " << acc_data[0] << "  " << acc_data[1] << "  " << acc_data[2] << "  " << gyro_data[0] << "  " << gyro_data[1] << "  " << gyro_data[2] << std::endl;
             }
 
-            PublishImuMessage(acc_data[0], acc_data[1], acc_data[2], gyro_data[0], gyro_data[1], gyro_data[2], quat[0], quat[1], quat[2], quat[3]);
+            PublishImuMessage(calibed_acc_data[0], calibed_acc_data[1], calibed_acc_data[2], calibed_gyro_data[0], calibed_gyro_data[1], calibed_gyro_data[2], quat[0], quat[1], quat[2], quat[3]);
 
             memset(&buffer_temp[0], 0, buffer_size);
             ptr = &buffer_temp[0];
             
+            ros::spinOnce();
             pub_hz.sleep();
-            //continue;
         }
-        ptr++;
-        ros::spinOnce();
+        else
+        {
+            ptr++;
+        }
+        //ros::spinOnce();
         //pub_hz.sleep();
     }
 }
