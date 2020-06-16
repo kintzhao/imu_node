@@ -1,0 +1,15 @@
+<launch>
+    <param name="imu_frame" type="string" value= "/imu_frame"/>
+    <param name="imu_topic" type="string" value= "/imu"/>
+    <param name="serial_port_name" type="string" value= "/dev/ttyUSB0"/>
+    <param name="imu_data_record_path" type="string" value= "/home/yhzhao/dataset/imu/imu_raw.log"/>
+    <param name="acc_calib_file" type="string" value= "imu_acc.calib"/>
+
+    <node pkg="imu_node" type="imu_node" name="imu_node" output="screen">
+        <param name="publish_rate" type="int" value= "200"/>
+        <param name="debug_raw_data" type="bool" value= "true"/>
+        <param name="conpensate_with_calib" type="bool" value= "true"/>
+        <param name="acc_calib_file" type="string" value= "imu_acc.calib"/>
+        <param name="gyro_calib_file" type="string" value= "imu_gyro.calib"/>
+    </node>
+</launch>
