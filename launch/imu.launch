@@ -2,7 +2,7 @@
     <param name="imu_frame" type="string" value= "/imu_frame"/>
     <param name="imu_topic" type="string" value= "/imu"/>
     <param name="serial_port_name" type="string" value= "/dev/ttyUSB0"/>
-    <param name="imu_data_record_path" type="string" value= "/home/yhzhao/dataset/imu/imu_raw.log"/>
+    <param name="imu_data_record_path" type="string" value= "/home/yhzhao/dataset/imu/imu_raw2.log"/>
     <param name="acc_calib_file" type="string" value= "imu_acc.calib"/>
 
     <node pkg="imu_node" type="imu_node" name="imu_node" output="screen">

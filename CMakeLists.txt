@@ -8,6 +8,7 @@ SET(CMAKE_CXX_FLAGS "$ENV{CXXFLAGS} -O3 -Wall -std=c++11")
 SET(CMAKE_C_FLAGS "$ENV{CFLAGS} -O3 -Wall")
 
 find_package(Eigen3 REQUIRED)
+find_package(glog)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
@@ -50,5 +51,6 @@ add_executable(imu_node src/imu_node.cpp)
 target_link_libraries(imu_node
   serial imu_packet
   ${catkin_LIBRARIES}
+  glog
 )
  

@@ -50,8 +50,12 @@ public:
                            const double &w, const double &x, const double &y, const double &z);
 
     bool RecordImu(std_srvs::SetBool::Request &req, std_srvs::SetBool::Response &res);
-
+    bool UpdateAHRS(const Eigen::Vector3d& acc, const Eigen::Vector3d& gyro, const double data_time_sec);
 private:
+    float SafeAsin(const float v) const;
+    void UpdateYawPitchRoll();
+    bool UpdateAHRSByCrossDletaFilter(const Eigen::Vector3d &acc, const Eigen::Vector3d &gyro, const double data_time_sec);
+
     std::string imu_topic_;
     std::string imu_frame_;
 
@@ -73,4 +77,9 @@ private:
     CalibData<double>  gyro_calib_;
     std::string acc_calib_file_;
     std::string gyro_calib_file_;
+
+    Eigen::Vector3d integral_cross_error_;
+    Eigen::Vector4d state_quaternion_;
+    Eigen::Vector3d state_angle_;
+    double last_time_sec_;
 };
